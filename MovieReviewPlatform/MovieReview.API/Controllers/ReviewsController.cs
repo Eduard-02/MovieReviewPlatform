@@ -34,8 +34,20 @@ namespace MovieReview.API.Controllers
 
         //Post  /api/reviews
         [HttpPost]
-        public async Task<ActionResult<Review>> PostReview(Review review)
+        public async Task<ActionResult<Review>> PostReview([FromBody] Review review)
         {
+            var user = await _context.Users.FindAsync(review.UserId);
+            var movie = await _context.Movies.FindAsync(review.MovieId);
+
+            Console.WriteLine($"Received Review: UserId={review.UserId}, MovieId={review.MovieId}, Rating={review.Rating}");
+
+
+            if (user == null) return BadRequest("Invalid UserId");
+            if (movie == null) return BadRequest("Invalid MovieId");
+
+            review.User = user;
+            review.Movie = movie;
+
             _context.Reviews.Add(review);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetReview), new { id = review.Id }, review);

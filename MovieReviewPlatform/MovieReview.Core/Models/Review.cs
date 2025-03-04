@@ -16,13 +16,15 @@ namespace MovieReview.Core.Models
 
         [Required]
         public int MovieId { get; set; }
-        [ForeignKey("MovieId")]
-        public Movie Movie { get; set; }
 
         [Required]
         public int UserId { get; set; }
+
+        [ForeignKey("MovieId")]
+        public Movie? Movie { get; set; }
+
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public DateTime Created { get; set; } = DateTime.UtcNow;
     }
