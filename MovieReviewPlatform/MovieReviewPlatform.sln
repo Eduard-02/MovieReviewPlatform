@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieReview.API", "MovieReview.API\MovieReview.API.csproj", "{B70214A3-3FCD-402A-A5CE-1401272E2633}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieReview.MVC", "MovieReview.MVC\MovieReview.MVC.csproj", "{8BA105E2-5B03-4C90-A123-1489536BDA36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieReview.Core", "MovieReview.Core\MovieReview.Core.csproj", "{3EDAE451-7E1D-45E7-9254-0643AD4DD94D}"
 EndProject
@@ -19,10 +17,6 @@ Global
 		{B70214A3-3FCD-402A-A5CE-1401272E2633}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B70214A3-3FCD-402A-A5CE-1401272E2633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B70214A3-3FCD-402A-A5CE-1401272E2633}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8BA105E2-5B03-4C90-A123-1489536BDA36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BA105E2-5B03-4C90-A123-1489536BDA36}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BA105E2-5B03-4C90-A123-1489536BDA36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BA105E2-5B03-4C90-A123-1489536BDA36}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3EDAE451-7E1D-45E7-9254-0643AD4DD94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3EDAE451-7E1D-45E7-9254-0643AD4DD94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EDAE451-7E1D-45E7-9254-0643AD4DD94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
