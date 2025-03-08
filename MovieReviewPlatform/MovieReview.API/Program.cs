@@ -1,6 +1,6 @@
-
 using Microsoft.EntityFrameworkCore;
 using MovieReview.API.Data;
+using MovieReview.API.Services;
 
 namespace MovieReview.API
 {
@@ -9,6 +9,8 @@ namespace MovieReview.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            string apiKey = File.ReadAllText("api_key.txt").Trim();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -20,9 +22,14 @@ namespace MovieReview.API
                 options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
                 options.JsonSerializerOptions.WriteIndented = true;
             });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddHttpClient<TmdbService>();
+
+            builder.Configuration["TMDb:ApiKey"] = apiKey;
 
             var app = builder.Build();
 
@@ -34,10 +41,7 @@ namespace MovieReview.API
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
