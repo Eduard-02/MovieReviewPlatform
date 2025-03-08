@@ -10,10 +10,24 @@ namespace MovieReview.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:5174") // Allow Vite frontend
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
+            });
+
             string apiKey = File.ReadAllText("api_key.txt").Trim();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             // Add services to the container.
 
@@ -32,6 +46,8 @@ namespace MovieReview.API
             builder.Configuration["TMDb:ApiKey"] = apiKey;
 
             var app = builder.Build();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
